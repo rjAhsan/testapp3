@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = "your-dockerhub-username"   // or leave empty for local
-        GIT_REPO = "https://github.com/your/repo.git"
+        DOCKER_REGISTRY = " "   // or leave empty for local
+        GIT_REPO = "https://github.com/rjAhsan/testapp3.git"
     }
 
     stages {
