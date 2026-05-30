@@ -1,36 +1,45 @@
-# Build output folders
+# Build outputs
 bin/
 obj/
+out/
 
-# Visual Studio files
+# Visual Studio
 .vs/
 *.user
 *.suo
+*.rsuser
 
-# Node modules (if any frontend)
-node_modules/
-
-# Git files
+# Git
 .git/
 .gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Jenkins
+Jenkinsfile
 
 # Logs
 *.log
 logs/
 
-# Environment files
+# Env files
 .env
-*.env
+appsettings.Development.json
 
-# Test results
+# Test
 TestResults/
+*.Tests/
 
-# Docker files themselves
-Dockerfile
-.dockerignore
+# Packages (if any)
+node_modules/
+packages/
 
-# Jenkins files
-Jenkinsfile
+# OS files
+.DS_Store
+Thumbs.db
 
-# README
-*.md
+# Large media/uploads folder if any
+wwwroot/uploads/
+wwwroot/lib/
