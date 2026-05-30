@@ -2,6 +2,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
+ENV ASPNETCORE_URLS=http://+:80
+
 # Copy project file first (better caching)
 COPY *.csproj .
 RUN dotnet restore
