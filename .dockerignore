@@ -43,3 +43,11 @@ Thumbs.db
 # Large media/uploads folder if any
 wwwroot/uploads/
 wwwroot/lib/
+
+bin/
+obj/
+.git/
+.vs/
+*.log
+node_modules/
+wwwroot/lib/
