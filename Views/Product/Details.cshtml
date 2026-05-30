@@ -1,0 +1,64 @@
+@model CrudApp.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Product Details</h5>
+                <span class="badge bg-light text-dark">ID: @Model.Id</span>
+            </div>
+            <div class="card-body p-4">
+                <dl class="row">
+                    <dt class="col-sm-4 text-muted"><i class="fas fa-tag me-1"></i>Product Name</dt>
+                    <dd class="col-sm-8 fw-semibold fs-5">@Model.Name</dd>
+
+                    <dt class="col-sm-4 text-muted"><i class="fas fa-align-left me-1"></i>Description</dt>
+                    <dd class="col-sm-8">@(Model.Description ?? "—")</dd>
+
+                    <dt class="col-sm-4 text-muted"><i class="fas fa-dollar-sign me-1"></i>Price</dt>
+                    <dd class="col-sm-8 text-success fw-bold fs-5">$@Model.Price.ToString("N2")</dd>
+
+                    <dt class="col-sm-4 text-muted"><i class="fas fa-warehouse me-1"></i>Quantity</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge fs-6 @(Model.Quantity > 50 ? "bg-success" : Model.Quantity > 10 ? "bg-warning text-dark" : "bg-danger")">
+                            @Model.Quantity in stock
+                        </span>
+                    </dd>
+
+                    <dt class="col-sm-4 text-muted"><i class="fas fa-folder me-1"></i>Category</dt>
+                    <dd class="col-sm-8"><span class="badge bg-secondary fs-6">@Model.Category</span></dd>
+
+                    <dt class="col-sm-4 text-muted"><i class="fas fa-calculator me-1"></i>Total Value</dt>
+                    <dd class="col-sm-8 text-primary fw-semibold">$@((Model.Price * Model.Quantity).ToString("N2"))</dd>
+
+                    <hr class="my-3" />
+
+                    <dt class="col-sm-4 text-muted"><i class="fas fa-calendar-plus me-1"></i>Created</dt>
+                    <dd class="col-sm-8 text-muted">@Model.CreatedAt.ToString("dddd, MMMM dd, yyyy — hh:mm tt")</dd>
+
+                    @if (Model.UpdatedAt.HasValue)
+                    {
+                        <dt class="col-sm-4 text-muted"><i class="fas fa-calendar-check me-1"></i>Last Updated</dt>
+                        <dd class="col-sm-8 text-muted">@Model.UpdatedAt.Value.ToString("dddd, MMMM dd, yyyy — hh:mm tt")</dd>
+                    }
+                </dl>
+
+                <div class="d-flex gap-2 mt-4">
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                        <i class="fas fa-edit me-2"></i>Edit
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                        <i class="fas fa-trash me-2"></i>Delete
+                    </a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
