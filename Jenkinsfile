@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = "your-dockerhub-username"   // or leave empty for local
-        GIT_REPO = "https://github.com/your/repo.git"
+        DOCKER_REGISTRY = " "   // or leave empty for local
+        GIT_REPO = "https://github.com/rjAhsan/testapp3.git"
     }
 
     stages {
@@ -17,16 +17,19 @@ pipeline {
                             env.IMAGE_NAME    = "webapp1"
                             env.CONTAINER_NAME = "webapp1"
                             env.HOST_PORT     = "8001"
+                            env.CONTAINER_PORT = "8080"
                             break
                         case 'staging':
                             env.IMAGE_NAME    = "webapp2"
                             env.CONTAINER_NAME = "webapp2"
                             env.HOST_PORT     = "8002"
+                            env.CONTAINER_PORT = "8080"
                             break
                         case 'dev':
                             env.IMAGE_NAME    = "webapp3"
                             env.CONTAINER_NAME = "webapp3"
                             env.HOST_PORT     = "8003"
+                            env.CONTAINER_PORT = "8080"
                             break
                         default:
                             error("Unknown branch: ${env.BRANCH_NAME}")
@@ -74,11 +77,7 @@ pipeline {
             steps {
                 script {
                     sh """
-                        docker run -d \
-                            --name ${env.CONTAINER_NAME} \
-                            --restart=always \
-                            -p ${env.HOST_PORT}:80 \
-                            ${env.BUILD_TAG}
+                        docker run -d --name ${env.CONTAINER_NAME} --restart=always -p ${env.HOST_PORT}:${env.CONTAINER_PORT} ${env.BUILD_TAG}
                     """
                 }
             }
