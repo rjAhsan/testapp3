@@ -11,6 +11,10 @@ pipeline {
         stage('Set Branch Config') {
             steps {
                 script {
+                     if (env.BRANCH_NAME.startsWith('PR-')) {
+                currentBuild.result = 'ABORTED'
+                error("Skipping PR branch: ${env.BRANCH_NAME}")
+            }
                     // Map branch → image name & container name & port
                     switch(env.BRANCH_NAME) {
                         case 'main':
