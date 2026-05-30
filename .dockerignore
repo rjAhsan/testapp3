@@ -1,0 +1,55 @@
+# Build outputs
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.rsuser
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Jenkins
+Jenkinsfile
+
+# Logs
+*.log
+logs/
+
+# Env files
+.env
+appsettings.Development.json
+
+# Test
+TestResults/
+*.Tests/
+
+# Packages (if any)
+node_modules/
+packages/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large media/uploads folder if any
+wwwroot/uploads/
+wwwroot/lib/
+
+bin/
+obj/
+.git/
+.vs/
+*.log
+node_modules/
+wwwroot/lib/
+
+publish/ 
